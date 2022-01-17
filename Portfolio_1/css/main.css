@@ -34,6 +34,11 @@ body {
     border-radius: 5px;
 }
 
+.btn-show:hover{
+    background-color: rgb(63, 68, 68);
+    color:black;
+}
+
 .img-iphone{
     margin: 0;
     padding: 0;
@@ -48,12 +53,18 @@ body {
 
 .show-portfolio{
     text-align: center;
+    margin: 60px;
 }
 
 .offer{
     background-color: rgb(78,97,192);
     color:white;
     text-align: center;
+    padding: 30px;
+}
+
+.s-title{
+    font-size: 11px;
 }
 
 .offer-icon-container{
@@ -77,6 +88,12 @@ body {
 
 .portfolio{
     text-align: center;
+    padding-top: 30px;
+}
+
+.portfolio-box{
+    width: 1000px;
+    display: inline-block;
 }
 
 .portfolio-container{
@@ -85,11 +102,16 @@ body {
     color: white;
 }
 
+
 .portfolio-bgimg{
     width: 50%;
-    height:200px;
+    height:250px;
     background-size: cover;
     padding: 30px;
+}
+
+.portfolio-bgimg:hover{
+    border-style: solid;
 }
 
 .portfolio-lt{
@@ -125,4 +147,31 @@ body {
     box-sizing: border-box;
     margin-left: 25px;
     margin-right: 25px;
+}
+
+@media screen and (max-width : 1200px) {
+    .portfolio-box{
+        width: 100%;
+    }
+    .portfolio-container{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .portfolio-bgimg{
+        width: 100%;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width : 768px) {
+    .land-main{
+        text-align: center;
+    }
+    .land-container{
+        flex-direction: column;
+    }
+    .img-iphone{
+        align-self: center;
+    }
 }
