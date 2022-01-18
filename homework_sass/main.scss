@@ -20,7 +20,7 @@
 }
 
 .alert{
-    width: 100%;
+    width: 90%;
     padding : 5px;
     padding-left: 20px;
     border-radius: 5px;
@@ -34,10 +34,28 @@
 .blue{
     @include alert_color(lightgray, rgb(220,237,247), rgb(88,126,147))
 }
-.yello{
+.yellow{
     @include alert_color(lightgray, #FDF8E4, #8b8064)
 }
 
 .row{
+    clear: both;
+    float: none;
+}
+
+@mixin column ($size){
     float:left;
+    width: $size / 12 * 100%;
+}
+
+.row .col-6{
+    @include column(6);
+}
+
+.row .col-4{
+    @include column(4);
+}
+
+.row .col-3{
+    @include column(3);
 }
