@@ -1,0 +1,100 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    text-align: center;
+    margin: 10px;
+}
+
+.mybutton{
+    padding: 20px;
+    color: white;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 5px;
+    font-size: 30px;
+}
+
+@keyframes 흔들흔들 {
+    0%{
+        transform: rotate(0deg)
+    }
+    25%{
+        transform: rotate(-10deg)
+    }
+    50%{
+        transform: rotate(10deg)
+    }
+    75%{
+        transform: rotate(-10deg)
+    }
+    100%{
+        transform: rotate(0deg)
+    }
+}
+
+.mybutton:hover{
+    animation-name: 흔들흔들;
+    animation-duration: 0.5s;
+}
+
+.myplus{
+    font-size: 100px;
+    cursor: pointer;
+    text-align: center;
+}
+
+@keyframes plus-symbol {
+    0%{
+        transform: rotate(0deg);
+    }
+    20%{
+        transform: rotate(-30deg)
+    }
+    100%{
+        transform: scale(2) rotate(45deg);
+    }
+}
+
+.myplus:hover{
+    animation-name: plus-symbol;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.left-menu{
+    width: 150px;
+    height: 500px;
+    background-color: black;
+    color: white;
+    text-align: right;
+    padding: 10px;
+    transform: translate(-100px);
+    transition: all 1s;
+}
+
+.left-menu:hover{
+    transform: translate(0px);
+    text-align: center;
+}
+
+@keyframes slide {
+    0%{ transform: translateX(-100px) }
+    50%{ transform: translateX(100px) }
+    100%{trainform: translateX(30px) }
+}
+.left-menu:hover .menu-item{
+    animation-name: slide;
+    animation-duration: 1s;
+}
+
+.menu-title{
+
+}
+
+.menu-item{
+
+    position:absolute;
+    /* left: -100px; */
+}
