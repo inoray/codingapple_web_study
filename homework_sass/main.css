@@ -1,0 +1,71 @@
+.container {
+  margin-bottom: 50px;
+}
+
+.mylist li {
+  list-style: none;
+  border: solid 0.5px lightgray;
+  padding: 10px;
+  width: 500px;
+  box-sizing: border-box;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.active:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.alert {
+  width: 90%;
+  padding: 5px;
+  padding-left: 20px;
+  border-radius: 5px;
+  margin: 10px;
+  border: solid 1px;
+}
+
+.green {
+  border-color: lightgray;
+  background: #e1f1d9;
+  color: #6f8a67;
+}
+
+.blue {
+  border-color: lightgray;
+  background: #dcedf7;
+  color: #587e93;
+}
+
+.yellow {
+  border-color: lightgray;
+  background: #FDF8E4;
+  color: #8b8064;
+}
+
+.row {
+  clear: both;
+  float: none;
+}
+
+.row .col-6 {
+  float: left;
+  width: 50%;
+  border: solid 1px gray;
+  box-sizing: border-box;
+}
+
+.row .col-4 {
+  float: left;
+  width: 33.3333333333%;
+  border: solid 1px gray;
+  box-sizing: border-box;
+}
+
+.row .col-3 {
+  float: left;
+  width: 25%;
+  border: solid 1px gray;
+  box-sizing: border-box;
+}/*# sourceMappingURL=main.css.map */
