@@ -1,0 +1,16 @@
+.bg-black{
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height:100%;
+    position: fixed;
+    z-index: 5;
+    display: none;
+}
+
+.bg-white{
+    margin: 20px;
+    border-radius: 5px;
+    padding: 20px;
+    width: 80%;
+    text-align: center;
+}
