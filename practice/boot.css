@@ -14,3 +14,17 @@
     width: 80%;
     text-align: center;
 }
+
+.menu-left {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: darkslategray;
+    text-align: center;
+    transition: all 1s;
+    transform: translateX(-200px);
+}
+
+.slide-left {
+    transform: translateX(0px);
+}
