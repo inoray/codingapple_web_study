@@ -14,3 +14,26 @@
     width: 80%;
     text-align: center;
 }
+
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    padding: 5px;
+    align-items: baseline;
+    justify-content: space-between;
+    background-color: transparent;
+    z-index: 5;
+
+    font-size: 20px;
+
+    transition: all 0.5s;
+}
+
+.menu-white{
+    background-color: white;
+    font-size: 10px;
+}
