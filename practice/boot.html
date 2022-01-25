@@ -98,6 +98,13 @@
       </div>
     </div>
 
+    <div>
+        <h4 id="p-name">상품제목</h4>
+        <p id="p-content">상품내용</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button" id="btn-p">상품정보</a>
+    </div>
+    <div stype="margin-bottom: 500px"></div>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -139,6 +146,18 @@
             $('.menu').removeClass("menu-white");
           }
         })
+
+        $(".bg-black").click(function(e){
+            if (e.target == e.currentTarget)
+                $(".bg-black").hide();
+        })
+
+        var pObj = {brand: "bmw", model: 520};
+        $("#btn-p").click(function(){
+            $("#p-name").html (pObj.brand);
+            $("#p-content").html(pObj.model);
+        })
+
     </script>
   </body>
 </html>
