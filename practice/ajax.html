@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <!-- <h4 id="hello">임시글자</h4> -->
+    <!-- <button class="btn btn-danger" id="btn-hello">hello</button> -->
+    <button class="btn btn-danger" id="btn-show">상품보여주기</button>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <script>
+
+      /*
+      $('#btn-hello').click(function(){
+        $.ajax({
+          url: 'https://codingapple1.github.io/hello.txt',
+          type: 'GET'
+        }).done(function(data){
+          $('#hello').html(data);
+        });
+      });
+      */
+      $('#btn-show').click(function(){
+        $.ajax({
+          url: 'https://codingapple1.github.io/data.json',
+          type: 'GET'
+        }).done(function(data){
+          $('.card-img-top').attr("src", data.img);
+          $('.card-title').html(data.model);
+          $('.card-text').html(`brand: ${data.brand}, 가격: ${data.price}`);
+        });
+      });
+    </script>
+  </body>
+</html>
