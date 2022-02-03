@@ -48,3 +48,15 @@ npm install mongodb
 ```bash
 npm install multer
 ```
+
+## 로그인 & 세션생성 관련 라이브러리
+
+```bash
+npm install passport passport-local express-session
+```
+
+## 환경변수 라이브러리
+
+```bash
+npm install dotenv
+```
