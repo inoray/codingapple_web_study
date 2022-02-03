@@ -6,6 +6,8 @@ app.set('view engine', 'ejs');
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
+app.use('/board/sub', require('./routes/board_sub'));
+
 var db;
 let dburl = 'mongodb+srv://sunghunk:qwer@cluster0.eyhv3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 MongoClient.connect(dburl, { useUnifiedTopology: true }, function(에러, client){
@@ -91,4 +93,30 @@ app.put('/edit', function(req, res){
         console.log('수정완료');
         res.redirect('/list');
     })
+})
+
+let multer = require('multer');
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/image')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+});
+
+var upload = multer({ storage: storage });
+
+app.get('/upload', function (req, res) {
+    res.render('upload.ejs');
+})
+
+app.post('/upload', upload.single('profile'), function (req, res) {
+    console.log(req.file.filename);
+    //res.send("업로드 완료");
+    res.redirect('/image/' + req.file.filename);
+})
+
+app.get('/image/:imagename', function (req, res) {
+    res.sendFile(__dirname + "/public/image/" + req.params.imagename);
 })

@@ -36,3 +36,15 @@ npm install ejs
 ```bash
 npm install method-override
 ```
+
+## mongo db
+
+```bash
+npm install mongodb
+```
+
+## 파일저장 도와주는 라이브러리
+
+```bash
+npm install multer
+```
