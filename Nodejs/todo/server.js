@@ -52,10 +52,10 @@ app.get('/write', function(req, res) {
 });
 
 app.post('/add', function(req, res){
-    //console.log(req.body);
+    console.log(req.user);
     db.collection('count').findOne({name: '게시물갯수'}, function(err, result){
         let cnt = parseInt(result.total);
-        db.collection('post').insertOne({_id: cnt + 1, user: req.user._id, title: req.body.title, date: req.body.date }, function(err, result){
+        db.collection('post').insertOne({_id: cnt + 1, user: req.user._id, user_id: req.user.id, title: req.body.title, date: req.body.date, reg_date: new Date() }, function(err, result){
             db.collection('count').updateOne({name: '게시물갯수'}, {$inc: {total:1}}, function(err, result){
                 if (err) {return console.log(err)}
                 res.send("전송완료");
@@ -65,21 +65,10 @@ app.post('/add', function(req, res){
 });
 
 app.get('/list', function(req, res){
+    console.log(req.user._id);
     db.collection('post').find().toArray(function(err, result){
         console.log(result);
-        // for (let i = 0; i < result.length; ++i){
-        //     console.log(result[i].user);
-        //     db.collection('login').findOne({ _id: result[i].user }, function (err2, result2) {
-        //         if (err2) { return console.log(err2) }
-        //         if (result2) {
-        //             console.log(result2);
-
-        //             result[i].username = result2.id;
-        //             console.log(result[i]);
-        //         }
-        //     })
-        // }
-        res.render('list.ejs', {posts: result});
+        res.render('list.ejs', {posts: result, user: req.user});
     })
 })
 
@@ -110,7 +99,7 @@ app.get('/edit/:id', function(req, res){
 
 app.put('/edit', function(req, res){
     console.log(req.body);
-    db.collection('post').updateOne({_id: parseInt(req.body.id) },{ $set : {title: req.body.title, date: req.body.date} },function(err, result){
+    db.collection('post').updateOne({_id: parseInt(req.body.id), user: req.user._id }, { $set : {title: req.body.title, date: req.body.date} },function(err, result){
         if (err) {return console.log(err)}
         console.log('수정완료');
         res.redirect('/list');
