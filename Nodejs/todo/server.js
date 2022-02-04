@@ -19,6 +19,8 @@ require('dotenv').config()
 app.use('/public', express.static('public'))
 app.use('/board/sub', require('./routes/board_sub'));
 
+const { ObjectId } = require('mongodb');
+
 var db;
 MongoClient.connect(process.env.DB_URL, { useUnifiedTopology: true }, function(에러, client){
     if (에러) return console.log(에러)
@@ -201,6 +203,32 @@ app.post('/register', function (req, res) {
     });
 })
 
-app.post('/chat', function (req, res) {
+app.post('/chatroom', 로그인했니, function (req, res) {
+    console.log(req.user._id);
+    let title = req.body._id + '_' + req.body.user + '_' + req.user._id;
+    let chatRoom = {
+        member: [ObjectId(req.body.user), req.user._id],
+        date: new Date(),
+        title: title
+    }
 
+    db.collection('chatroom').findOne({ title: title }, function (err, result) {
+        if (err) { return console.log(err) };
+        if (!result) {
+            db.collection('chatroom').insertOne(chatRoom).then((result2) => {
+                console.log('채팅방 생성 완료');
+            });
+        }
+    });
+})
+
+app.get('/chat', 로그인했니, function (req, res) {
+    console.log(req.user._id);
+
+    db.collection('chatroom').find({ member: req.user._id }).toArray(function (err, result) {
+        if (err) { return console.log(err) };
+
+        console.log(result);
+        res.render('chat.ejs', {data: result});
+    })
 })
