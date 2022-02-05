@@ -40,7 +40,7 @@ function App() {
 
           return (
             <div className="list" key={i}>
-              <h3 onClick={ ()=>{ changeIdx(i) } }>{a.title} <sapn onClick={ ()=>{ incLike(i) } }>👍</sapn> {a.like} </h3>
+              <h3 onClick={ ()=>{ changeIdx(i) } }>{a.title} <span onClick={ ()=>{ incLike(i) } }>👍</span> {a.like} </h3>
               <p>2월 17일 발행</p>
               <hr/>
             </div>
