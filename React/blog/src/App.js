@@ -15,11 +15,20 @@ function App() {
 
   let [idxSelected, changeIdx] = useState(0);
 
+  let [newTitle, changeNewTitle] = useState("");
+
+  function addPost (){
+    let newPost = [...post];
+    newPost.unshift({title: newTitle, like: 0});
+    changePost(newPost);
+  }
+
   return (
     <div className="App">
       <div className='black-nav'>
         <div>개발 blog</div>
       </div>
+
       {
         post.map ( (a, i)=> {
 
@@ -30,7 +39,7 @@ function App() {
            }
 
           return (
-            <div className="list">
+            <div className="list" key={i}>
               <h3 onClick={ ()=>{ changeIdx(i) } }>{a.title} <sapn onClick={ ()=>{ incLike(i) } }>👍</sapn> {a.like} </h3>
               <p>2월 17일 발행</p>
               <hr/>
@@ -38,12 +47,20 @@ function App() {
           )
         })
       }
-      <button onClick={()=>{ modal변경( !modal ) }}>버튼</button>
+
+      <div className="publish">
+        <input onChange={ (e)=>{ changeNewTitle(e.target.value) } }/>
+        <button onClick={ ()=>{ addPost() } }>저장</button>
+      </div>
+
+      <button onClick={()=>{ modal변경( !modal ) }}>상세내용</button>
+
       {
         modal
         ? <Modal post={post} idx={idxSelected} />
         : null
       }
+
     </div>
   );
 }
