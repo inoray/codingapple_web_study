@@ -5,6 +5,9 @@ import './App.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Data from './data.js';
 
+import { Link, Route, Switch } from 'react-router-dom';
+import Detail from './Detail.js';
+
 function App() {
 
   let [shoes, changeShoes] = useState(Data);
@@ -12,12 +15,12 @@ function App() {
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">ShoeShop</Navbar.Brand>
+          <Navbar.Brand><Link to="/">ShoeShop</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link><Link to="/">Home</Link></Nav.Link>
+              <Nav.Link><Link to="/detail">Detail</Link></Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -29,26 +32,39 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className="jumbotron background">
-        <h1 className="display-4">20% Season Off</h1>
-        <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        {/* <hr class="my-4"/> */}
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p className="lead">
-          <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
-      </div>
-      <div className="container">
-        <div className="row">
 
-          {
-            shoes.map( (a, i)=>{
-              return (<ShoesInfo shoesData={a} idx={i} key={i} />)
-            })
-          }
+      <Switch>
+        <Route exact path="/">
+          <div className="jumbotron background">
+            <h1 className="display-4">20% Season Off</h1>
+            <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            {/* <hr class="my-4"/> */}
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p className="lead">
+              <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </p>
+          </div>
 
-        </div>
-      </div>
+          <div className="container">
+            <div className="row">
+              {
+                shoes.map( (a, i)=>{
+                  return (<ShoesInfo shoesData={a} idx={i} key={i} />)
+                })
+              }
+            </div>
+          </div>
+        </Route>
+
+        <Route path="/detail/:id">
+          <Detail shoes={shoes}/>
+        </Route>
+
+        <Route path="/:id">
+          id를 보여주세요
+        </Route>
+      </Switch>
+
     </div>
   );
 }
