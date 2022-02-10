@@ -1,5 +1,5 @@
 /* eslint-disable */
-import {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
@@ -9,9 +9,13 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Detail from './Detail.js';
 import axios from 'axios';
 
+export let 재고context = React.createContext();
+
 function App() {
 
   let [shoes, setShoes] = useState(Data);
+  let [재고, 재고변경] = useState([10, 11, 12]);
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -47,13 +51,16 @@ function App() {
           </div>
 
           <div className="container">
+
+            <재고context.Provider value={재고}>
             <div className="row">
               {
                 shoes.map( (a, i)=>{
-                  return (<ShoesInfo shoesData={a} idx={i} key={i} />)
+                  return (<Card shoesData={a} idx={i} key={i} />)
                 })
               }
             </div>
+            </재고context.Provider>
             <button className="btn btn-primary" onClick={()=>{
               // 로딩중 UI 띄움
 
@@ -75,7 +82,11 @@ function App() {
         </Route>
 
         <Route path="/detail/:id">
-          <Detail shoes={shoes}/>
+          <재고context.Provider value={재고}>
+
+          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
+
+          </재고context.Provider>
         </Route>
 
         <Route path="/:id">
@@ -87,15 +98,27 @@ function App() {
   );
 }
 
-function ShoesInfo(props){
+function Card(props){
+
+  let 재고 = useContext(재고context);
+
   return (
     <div className="col-md-4">
       <img src={"https://codingapple1.github.io/shop/shoes"+ (props.idx+1) +".jpg"} width="100%" />
       <h4>{props.shoesData.title}</h4>
       <p>{props.shoesData.content}</p>
       <p>{props.shoesData.price}</p>
+      <p>{재고[props.shoesData.id]}</p>
+      <Test/>
     </div>
   );
+}
+
+function Test(){
+  let 재고 = useContext(재고context);
+  return(
+    <p>재고: {재고} </p>
+  )
 }
 
 export default App;
