@@ -1,7 +1,8 @@
 
 /* eslint-disable */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 function Detail(props){
 
@@ -12,8 +13,23 @@ function Detail(props){
     return e.id == id;
   });
 
+  let [viewAlert, setViewAlert] = useState(true);
+
+  // Detail 컴포넌트가 첫 등장하고나서 실행하고 싶은 코드
+  useEffect(()=>{
+    let timer = setTimeout(()=>{setViewAlert(false)}, 2000);
+
+    // Detail 컴포넌트가 사라질 때 실행하고 싶은 코드는 리턴할 때 넣어야 함.
+    return ()=>{ clearTimeout(timer) };
+  }, [viewAlert]);
+
   return (
     <div className="container">
+      {
+        viewAlert
+        ? <MyAlert/>
+        : null
+      }
       <div className="row">
         <div className="col-md-6">
           <img src={'https://codingapple1.github.io/shop/shoes'+ (parseInt(found.id) + 1) + '.jpg'} width="100%" />
@@ -27,6 +43,14 @@ function Detail(props){
         </div>
       </div>
     </div>
+  );
+}
+
+function MyAlert(){
+  return (
+  <Alert key='0' variant='primary'>
+    재고가 얼마 남지 않았습니다.
+  </Alert>
   );
 }
 
