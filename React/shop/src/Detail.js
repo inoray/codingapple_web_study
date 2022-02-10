@@ -2,14 +2,19 @@
 /* eslint-disable */
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
+import { Alert, Nav } from 'react-bootstrap';
 import {재고context} from './App.js';
+import {CSSTransition} from 'react-transition-group';
+import './Detail.css';
 
 function Detail(props){
 
   let {id} = useParams();
   let history = useHistory();
   let 재고 = useContext(재고context);
+
+  let [tab, setTab] = useState(0);
+  let [tabSwitch, setTabSwitch] = useState(false);
 
   let found = props.shoes.find((e)=>{
     return e.id == id;
@@ -50,6 +55,20 @@ function Detail(props){
           <button className="btn btn-danger" onClick={ ()=>{history.goBack()} }>뒤로가기</button>
         </div>
       </div>
+
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+        <Nav.Item>
+          <Nav.Link eventKey="link-0" onClick={()=>{setTab(0); setTabSwitch(false)}}>Active</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1" onClick={()=>{setTab(1); setTabSwitch(false)}}>Option 2</Nav.Link>
+        </Nav.Item>
+      </Nav>
+
+      <CSSTransition in={tabSwitch} classNames="wow" timeout={500}>
+        <TabContent tab={tab} setTabSwitch={setTabSwitch}/>
+      </CSSTransition>
+
     </div>
   );
 }
@@ -66,6 +85,19 @@ function Info(props){
   return (
     <p>재고: {props.재고}</p>
   );
+}
+
+function TabContent(props){
+
+  useEffect(()=>{
+    props.setTabSwitch(true);
+  });
+
+  if (props.tab === 0){
+    return <div>0번째 내용입니다.</div>;
+  } else if (props.tab === 1){
+    return <div>1번째 내용입니다.</div>;
+  }
 }
 
 export default Detail;
