@@ -7,10 +7,11 @@ import Data from './data.js';
 
 import { Link, Route, Switch } from 'react-router-dom';
 import Detail from './Detail.js';
+import axios from 'axios';
 
 function App() {
 
-  let [shoes, changeShoes] = useState(Data);
+  let [shoes, setShoes] = useState(Data);
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -53,6 +54,23 @@ function App() {
                 })
               }
             </div>
+            <button className="btn btn-primary" onClick={()=>{
+              // 로딩중 UI 띄움
+
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              .then((result)=>{
+                // 로딩중 UI 안보이게 처리
+
+                console.log('성공했어요');
+                console.log(result.data);
+                setShoes([...shoes, ...result.data]);
+              })
+              .catch(()=>{
+                // 로딩중 UI 안보이게 처리
+
+                console.log('실패했어요');
+              });
+            }}>더보기</button>
           </div>
         </Route>
 
