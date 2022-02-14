@@ -6,6 +6,7 @@ import { Alert, Nav } from 'react-bootstrap';
 import {재고context} from './App.js';
 import {CSSTransition} from 'react-transition-group';
 import './Detail.css';
+import {connect} from 'react-redux';
 
 function Detail(props){
 
@@ -50,7 +51,9 @@ function Detail(props){
           <button className="btn btn-danger" onClick={()=>{
             let cur재고 = props.재고[id] - 1;
 
-            props.재고변경( cur재고 )
+            props.재고변경( cur재고 );
+            props.dispatch({type:"addItem", payload:{id : 2, name : '새신발', quan : 1}});
+            history.push("/cart");
             }}>주문하기</button>
           <button className="btn btn-danger" onClick={ ()=>{history.goBack()} }>뒤로가기</button>
         </div>
@@ -100,4 +103,11 @@ function TabContent(props){
   }
 }
 
-export default Detail;
+function stateProps (state){
+  return {
+      state: state.reducer,
+      stateAlert: state.reducer2
+  }
+}
+
+export default connect(stateProps)(Detail);
