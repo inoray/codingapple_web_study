@@ -52,7 +52,7 @@ function Detail(props){
             let cur재고 = props.재고[id] - 1;
 
             props.재고변경( cur재고 );
-            props.dispatch({type:"addItem", payload:{id : 2, name : '새신발', quan : 1}});
+            props.dispatch({type:"addItem", payload:{id : found.id, name : found.title, quan : 1}});
             history.push("/cart");
             }}>주문하기</button>
           <button className="btn btn-danger" onClick={ ()=>{history.goBack()} }>뒤로가기</button>

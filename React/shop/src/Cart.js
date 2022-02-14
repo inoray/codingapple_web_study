@@ -18,7 +18,7 @@ function Cart(props){
 
             {state.reducer.map((a, i)=>{
                 return (
-                    <tr>
+                    <tr key={i}>
                         <td>{a.id}</td>
                         <td>{a.name}</td>
                         <td>{a.quan}</td>
