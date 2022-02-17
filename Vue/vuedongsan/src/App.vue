@@ -4,8 +4,11 @@
   </div>
 
   <div v-for="(a, i) in products" :key="i">
-    <h4>{{ a }}</h4>
-    <p>80 만원</p>
+    <img class="room-img" src="./assets/room0.jpg" />
+    <h4>{{ a.name }}</h4>
+    <p>{{ a.price }} 만원</p>
+    <button @click="increase">신고하기</button>
+    <span>신고수: {{ a.report }}</span>
   </div>
 </template>
 
@@ -15,8 +18,18 @@ export default {
   data() {
     return {
       menu: ["Home", "Products", "About"],
-      products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
+      products: [
+        { name: "역삼동원룸", price: 50, report: 0 },
+        { name: "천호동원룸", price: 60, report: 0 },
+        { name: "마포구원룸", price: 70, report: 0 },
+      ],
+      // products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
     };
+  },
+  methods: {
+    increase() {
+      this.products[0].report++;
+    },
   },
   components: {},
 };
@@ -40,5 +53,10 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+.room-img {
+  width: 100%;
+  margin-top: 40px;
 }
 </style>
