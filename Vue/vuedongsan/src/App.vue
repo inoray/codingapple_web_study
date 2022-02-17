@@ -1,35 +1,19 @@
 <template>
-  <div class="black-bg" v-if="modalState" @click="modalState = false">
-    <div class="white-bg">
-      <img class="room-img" :src="onerooms[selected].image" />
-      <h4>{{ onerooms[selected].title }}</h4>
-      <p>{{ onerooms[selected].price }} 만원</p>
-      <p>{{ onerooms[selected].content }}</p>
-    </div>
-  </div>
+  <Modal :onerooms="onerooms" :selected="selected" :modalState="modalState" />
 
   <div class="menu">
     <a v-for="a in menu" :key="a"> {{ a }} </a>
   </div>
 
-  <div v-for="(a, i) in onerooms" :key="i">
-    <img class="room-img" :src="a.image" />
-    <h4
-      @click="
-        modalState = true;
-        selected = i;
-      "
-    >
-      {{ a.title }}
-    </h4>
-    <p>{{ a.price }} 만원</p>
-    <!-- <button @click="increase">신고하기</button>
-    <span>신고수: {{ a.report }}</span> -->
-  </div>
+  <Discount />
+  <Card :onerooms="onerooms" />
 </template>
 
 <script>
 import data from "./assets/oneroom.js";
+import Discount from "./Discount.vue";
+import Modal from "./Modal.vue";
+import Card from "./Card.vue";
 
 export default {
   name: "App",
@@ -51,7 +35,11 @@ export default {
       this.products[0].report++;
     },
   },
-  components: {},
+  components: {
+    Discount: Discount,
+    Modal: Modal,
+    Card: Card,
+  },
 };
 </script>
 
