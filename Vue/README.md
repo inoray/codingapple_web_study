@@ -8,13 +8,13 @@
 npm install -g @vue/cli
 ```
 
-## vscode 확장 설치
+### vscode 확장 설치
 
 - vetur
 - html css support
 - Vue 3 Snippets
 
-## vue 프로젝트 생성
+### vue 프로젝트 생성
 
 ```bash
 vue create vuedongsan
@@ -28,7 +28,7 @@ Vue CLI v4.5.15
 
 ```
 
-## 미리보기
+### 미리보기
 
 ```bash
 npm run serve
