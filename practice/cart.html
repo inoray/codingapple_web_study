@@ -1,67 +1,73 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <div class="card-group container" id="cart-container">
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <div class="card-group container" id="cart-container">
+    <div class="card">
+      <img src="https://via.placeholder.com/600">
+      <div class="card-body">
+        <h5>Card title</h5>
+        <p>가격 : 70000</p>
+        <button class="btn btn-danger">주문하기</button>
+      </div>
     </div>
-
-    <div class="container my-4">
-        <button class="btn btn-danger" id="btn-sort">가격순정렬</button>
-        <button class="btn btn-danger" id="btn-filter">필터</button>
-        <button class="btn btn-danger" id="btn-discount">할인가격</button>
+    <div class="card">
+      <img src="https://via.placeholder.com/600">
+      <div class="card-body">
+        <h5>Card title</h5>
+        <p>가격 : 70000</p>
+        <button class="btn btn-danger">주문하기</button>
+      </div>
     </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/600">
+      <div class="card-body">
+        <h5>Card title</h5>
+        <p>가격 : 70000</p>
+        <button class="btn btn-danger">주문하기</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+  <div class="container my-4">
+    <button class="btn btn-danger" id="btn-sort">가격순정렬</button>
+    <button class="btn btn-danger" id="btn-filter">필터</button>
+    <button class="btn btn-danger" id="btn-discount">할인가격</button>
+  </div>
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Optional JavaScript; choose one of the two! -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script>
-        let products = [
-          { id : 0, price : 70000, title : 'Blossom Dress' },
-          { id : 1, price : 50000, title : 'Springfield Shirt' },
-          { id : 2, price : 60000, title : 'Black Monastery' }
-        ]
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
 
-        function viewProducts(products){
-            $('#cart-container').html('');
-            products.forEach(function(i){
-                let template =
-                `<div class="card">
+  <script>
+    let products = [
+      { id: 0, price: 70000, title: 'Blossom Dress' },
+      { id: 1, price: 50000, title: 'Springfield Shirt' },
+      { id: 2, price: 60000, title: 'Black Monastery' }
+    ]
+
+    function viewProducts(products) {
+      $('#cart-container').html('');
+      products.forEach(function (i) {
+        let template =
+          `<div class="card">
                     <img src="https://via.placeholder.com/600">
                     <div class="card-body">
                     <h5>${i.title}</h5>
@@ -70,35 +76,36 @@
                     </div>
                 </div>`;
 
-                $('#cart-container').append(template);
-            })
-        }
+        $('#cart-container').append(template);
+      })
+    }
 
-        viewProducts(products);
+    viewProducts(products);
 
-        $('#btn-sort').click(function(){
-            products.sort(function(a,b){
-                return a.price - b.price;
-            });
-            viewProducts(products);
-        });
+    $('#btn-sort').click(function () {
+      products.sort(function (a, b) {
+        return a.price - b.price;
+      });
+      viewProducts(products);
+    });
 
-        $('#btn-filter').click(function(){
-            let filteredProducts = products.filter(function(a){
-                return a.price >50000;
-            });
-            viewProducts(filteredProducts);
-        });
+    $('#btn-filter').click(function () {
+      let filteredProducts = products.filter(function (a) {
+        return a.price > 50000;
+      });
+      viewProducts(filteredProducts);
+    });
 
-        $('#btn-discount').click(function(){
-            let discounted = products.map(function(a){
-                b = {...a};
-                b.price = b.price * 0.9;
-                return b;
-            })
-            viewProducts(discounted);
-        })
+    $('#btn-discount').click(function () {
+      let discounted = products.map(function (a) {
+        b = { ...a };
+        b.price = b.price * 0.9;
+        return b;
+      })
+      viewProducts(discounted);
+    })
 
-      </script>
-  </body>
+  </script>
+</body>
+
 </html>

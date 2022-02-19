@@ -2,73 +2,73 @@
 
 <script>
 
-    // class, extends, getter, setter 연습문제
+  // class, extends, getter, setter 연습문제
 
-    // 1. 직접 class 구조 만들어 보기
-    // 3. incAge 함수 추가하기
-    class Dog {
-        constructor(type, color){
-            this.type = type;
-            this.color = color;
-        }
-        incAge(){
-            if (this instanceof Cat){
-                this.age++;
-            }
-        }
+  // 1. 직접 class 구조 만들어 보기
+  // 3. incAge 함수 추가하기
+  class Dog {
+    constructor(type, color) {
+      this.type = type;
+      this.color = color;
     }
-
-    let dog1 = new Dog('말티즈', 'white');
-    let dog2 = new Dog('진돗개', 'brown');
-
-    // 2. 고양이 object 만들기
-    class Cat extends Dog {
-        constructor(type, color, age){
-            super(type, color);
-            this.age = age;
-        }
+    incAge() {
+      if (this instanceof Cat) {
+        this.age++;
+      }
     }
+  }
 
-    let cat1 = new Cat('코숏', 'white', 5);
-    let cat2 = new Cat('러시안블루', 'brown', 2);
+  let dog1 = new Dog('말티즈', 'white');
+  let dog2 = new Dog('진돗개', 'brown');
 
-    // 4.get/set 이용해보기
-
-    class Unit {
-        constructor(){
-            this.attack = 5;
-            this.hp = 100;
-        }
-        get battlePoint(){
-            return this.attack + this.hp;
-        }
-        set heal(hp){
-            this.hp = this.hp + hp;
-        }
+  // 2. 고양이 object 만들기
+  class Cat extends Dog {
+    constructor(type, color, age) {
+      super(type, color);
+      this.age = age;
     }
+  }
 
-    // 5. get/set 이용해 보기 2
-    var data = {
-        odd: [],
-        even: [],
-        setData(...rest){
-            rest.forEach((a)=>{
-                if (a % 2 == 0){
-                    this.even.push(a);
-                } else {
-                    this.odd.push(a);
-                }
-            })
-        },
-        get getData (){
-            this.odd.sort();
-            this.even.sort();
-            return {odd: this.odd, even: this.even};
+  let cat1 = new Cat('코숏', 'white', 5);
+  let cat2 = new Cat('러시안블루', 'brown', 2);
+
+  // 4.get/set 이용해보기
+
+  class Unit {
+    constructor() {
+      this.attack = 5;
+      this.hp = 100;
+    }
+    get battlePoint() {
+      return this.attack + this.hp;
+    }
+    set heal(hp) {
+      this.hp = this.hp + hp;
+    }
+  }
+
+  // 5. get/set 이용해 보기 2
+  var data = {
+    odd: [],
+    even: [],
+    setData(...rest) {
+      rest.forEach((a) => {
+        if (a % 2 == 0) {
+          this.even.push(a);
+        } else {
+          this.odd.push(a);
         }
-    };
+      })
+    },
+    get getData() {
+      this.odd.sort();
+      this.even.sort();
+      return { odd: this.odd, even: this.even };
+    }
+  };
 
-    data.setData( 1,2,3,4,5);
-    console.log(data.getData);
+  data.setData(1, 2, 3, 4, 5);
+  console.log(data.getData);
 
 </script>
 
@@ -76,72 +76,72 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-    // promise 연습
-    // 1. 이미지로딩 성공시 특정 코드 실행
-    let p = new Promise((성공, 실패)=>{
-        let img = document.getElementById("test");
-        img.addEventListener('load', ()=>{
-            성공();
-        });
-        img.addEventListener('error', ()=>{
-            실패();
-        });
+  // promise 연습
+  // 1. 이미지로딩 성공시 특정 코드 실행
+  let p = new Promise((성공, 실패) => {
+    let img = document.getElementById("test");
+    img.addEventListener('load', () => {
+      성공();
     });
-
-    p.then(()=>{
-        console.log("이미지로딩 성공");
-    }).catch(()=>{
-        console.log("이미지로딩 실패");
+    img.addEventListener('error', () => {
+      실패();
     });
+  });
 
-    // 2. ajax 요청 성공시 코드 실행
-    let p2 = new Promise((성공, 실패)=>{
-        $.ajax({
-            url: "https://codingapple1.github.io/hello.txt",
-            type: "GET"
-        }).done((result)=>{
-            성공(result)
-        }).fail(()=>{
-            실패()
-        })
-    });
+  p.then(() => {
+    console.log("이미지로딩 성공");
+  }).catch(() => {
+    console.log("이미지로딩 실패");
+  });
 
-    p2.then((result)=>{
-        console.log(result);
-    }).catch(()=>{
-        console.log('ajax 요청 실패')
+  // 2. ajax 요청 성공시 코드 실행
+  let p2 = new Promise((성공, 실패) => {
+    $.ajax({
+      url: "https://codingapple1.github.io/hello.txt",
+      type: "GET"
+    }).done((result) => {
+      성공(result)
+    }).fail(() => {
+      실패()
     })
+  });
 
-    // 3. promise chaining
-    let p3 = new Promise((성공, 실패)=>{
+  p2.then((result) => {
+    console.log(result);
+  }).catch(() => {
+    console.log('ajax 요청 실패')
+  })
 
-        $.ajax({
-            url: "https://codingapple1.github.io/hello.txt",
-            type: "GET"
-        }).done((result)=>{
-            성공(result)
-        }).fail(()=>{
-            실패()
-        })
+  // 3. promise chaining
+  let p3 = new Promise((성공, 실패) => {
+
+    $.ajax({
+      url: "https://codingapple1.github.io/hello.txt",
+      type: "GET"
+    }).done((result) => {
+      성공(result)
+    }).fail(() => {
+      실패()
     })
+  })
 
-    p3.then((result)=>{
-        console.log(result);
+  p3.then((result) => {
+    console.log(result);
 
-        let p4 = new Promise((성공, 실패)=>{
+    let p4 = new Promise((성공, 실패) => {
 
-            $.ajax({
-                url: "https://codingapple1.github.io/hello2.txt",
-                type: "GET"
-            }).done((result)=>{
-                성공(result)
-            }).fail(()=>{
-                실패()
-            })
-        })
-        return p4;
-
-    }).then((result)=>{
-        console.log(result);
+      $.ajax({
+        url: "https://codingapple1.github.io/hello2.txt",
+        type: "GET"
+      }).done((result) => {
+        성공(result)
+      }).fail(() => {
+        실패()
+      })
     })
+    return p4;
+
+  }).then((result) => {
+    console.log(result);
+  })
 </script>
