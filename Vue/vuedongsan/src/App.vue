@@ -1,12 +1,14 @@
 <template>
-  <Modal :onerooms="onerooms" :selected="selected" :modalState="modalState" />
+  <Modal @closeModal="modalState=false"
+    :onerooms="onerooms" :selected="selected" :modalState="modalState" />
 
   <div class="menu">
     <a v-for="a in menu" :key="a"> {{ a }} </a>
   </div>
 
   <Discount />
-  <Card :onerooms="onerooms" />
+  <Card @openModal="modalState=true; selected=$event"
+    :oneroom="a" v-for="(a,i) in onerooms" :key="i"/>
 </template>
 
 <script>
