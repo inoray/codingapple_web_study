@@ -9,6 +9,11 @@
   </div>
 
   <Discount />
+  <button @click="sortPrice">가격순정렬</button>
+  <button @click="sortTitle">가나다순정렬</button>
+  <button @click="sortPriceInverse">가격역순정렬</button>
+  <button @click="filterUnderPrice">50만원 이하 필터링</button>
+  <button @click="backOriData">원래대로보여주기</button>
   <Card @openModal="modalState=true; selected=$event"
     :oneroom="a" v-for="(a,i) in onerooms" :key="i"/>
 </template>
@@ -31,13 +36,40 @@ export default {
         { title: "천호동원룸", price: 60, report: 0 },
         { title: "마포구원룸", price: 70, report: 0 },
       ],
-      onerooms: data,
+      oriOnerooms: data,
+      onerooms: [...data],
     };
   },
   methods: {
     increase() {
       this.products[0].report++;
     },
+    sortPrice() {
+      this.onerooms.sort((a, b)=>{
+        return a.price - b.price;
+      })
+    },
+    sortTitle() {
+      this.onerooms.sort((a,b) => {
+        if(a.title < b.title)
+          return -1;
+        if (a.title > b.title)
+          return 1;
+        if (a.title === b.title)
+          return 0;
+      })
+    },
+    sortPriceInverse() {
+      this.onerooms.sort((a,b) => {
+        return b.price - a.price;
+      });
+    },
+    filterUnderPrice() {
+      this.onerooms = this.onerooms.filter(a => a.price <= 500000);
+    },
+    backOriData() {
+      this.onerooms = [...this.oriOnerooms];
+    }
   },
   components: {
     Discount: Discount,
