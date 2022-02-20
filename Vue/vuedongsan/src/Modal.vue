@@ -35,6 +35,11 @@ export default {
       }
     }
   },
+  beforeUpdate(){
+    if(this.month == 2){
+      alert("2를 입력했습니다.");
+    }
+  },
 };
 </script>
 

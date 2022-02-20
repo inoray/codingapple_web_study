@@ -8,7 +8,7 @@
     <a v-for="a in menu" :key="a"> {{ a }} </a>
   </div>
 
-  <Discount />
+  <Discount v-if="showDiscount"/>
   <button @click="sortPrice">가격순정렬</button>
   <button @click="sortTitle">가나다순정렬</button>
   <button @click="sortPriceInverse">가격역순정렬</button>
@@ -28,6 +28,7 @@ export default {
   name: "App",
   data() {
     return {
+      showDiscount: true,
       modalState: false,
       selected: 0,
       menu: ["Home", "Products", "About"],
@@ -70,6 +71,11 @@ export default {
     backOriData() {
       this.onerooms = [...this.oriOnerooms];
     }
+  },
+  beforMount(){
+  },
+  mounted(){
+    //setTimeout(()=>{this.showDiscount = false;}, 2000);
   },
   components: {
     Discount: Discount,
