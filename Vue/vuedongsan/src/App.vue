@@ -1,6 +1,8 @@
 <template>
-  <Modal @closeModal="modalState=false"
-    :onerooms="onerooms" :selected="selected" :modalState="modalState" />
+  <transition name="fade">
+    <Modal @closeModal="modalState=false"
+      :onerooms="onerooms" :selected="selected" :modalState="modalState" />
+  </transition>
 
   <div class="menu">
     <a v-for="a in menu" :key="a"> {{ a }} </a>
@@ -89,4 +91,25 @@ div {
   border-radius: 8px;
   padding: 20px;
 }
+
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+
 </style>
