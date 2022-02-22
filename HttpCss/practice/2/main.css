@@ -1,0 +1,34 @@
+*{
+  margin: 0;
+}
+.container{
+  width: 600px;
+  margin:auto;
+  margin-top: 10px;
+  background-color: #eee;
+  padding: 20px;
+  border: 10px solid black;
+}
+.left{
+  width: 70%;
+  float: left;
+}
+.right{
+  width: 30%;
+  float: left;
+}
+.right img{
+  width: 100%;
+  border-radius: 10px;
+}
+.title-img{
+  width: 50px;
+  float: left;
+}
+.title-text{
+  float: left;
+  padding-left: 10px;
+}
+.content{
+  padding-top: 10px;
+}
