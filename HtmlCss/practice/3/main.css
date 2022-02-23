@@ -8,4 +8,37 @@
   background-size: cover;
   background-position: center;
   background-attachment : fixed;
+  color: #fff;
+  padding: 1px;
+  text-align: center;
+}
+.main-title{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.main-background p{
+  font-size: 20px;
+  padding: 20px;
+}
+.buy-button{
+  width: 130px;
+  height: 50px;
+  border-radius: 5px;
+  border-style: none;
+  font-size: 18px;
+}
+.message-box{
+  width: 500px;
+  background-color: #eee;
+  padding: 40px;
+  text-align: center;
+  margin: auto;
+  position: relative;
+  top: -100px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.message-box h3{
+  padding: 20px;
 }
