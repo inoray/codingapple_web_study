@@ -19,7 +19,8 @@ H2{
   padding: 30px;
 }
 .table-container{
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   /* background-color: #fff; */
   border-radius: 10px;
   margin: auto;
@@ -67,4 +68,7 @@ td, th{
 }
 .item{
   text-align: left;
+}
+.table-container>table th:nth-child(2){
+  width: 700px;
 }
