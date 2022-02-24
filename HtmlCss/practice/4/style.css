@@ -52,6 +52,18 @@ td, th{
   color: #163A63;
   float: left;
 }
+a{
+  /* text-decoration: none; */
+}
+a:link{
+  color: #2884EA;
+}
+a:visited{
+  color: #163A63;
+}
+a:active{
+  color: #2884EA;
+}
 .table-footer button{
   float: right;
   background-color: #133761;
@@ -59,6 +71,11 @@ td, th{
   color: #fff;
   border-style: none;
   border-radius: 10px;
+
+  cursor: pointer;
+}
+.table-footer button:active{
+  background-color: #08192C;
 }
 .digit{
   text-align: right;
