@@ -5,6 +5,9 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+p, H2, th, td, span{
+  transform: rotate(0.03deg);
+}
 body{
   margin: 0;
   box-sizing: border-box;
