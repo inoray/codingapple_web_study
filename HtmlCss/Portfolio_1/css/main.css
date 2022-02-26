@@ -18,6 +18,8 @@ body {
 
 .land-container{
   display: flex;
+  max-width: 900px;
+  margin: auto;
 }
 
 .land-message{
@@ -69,11 +71,14 @@ body {
 
 .offer-icon-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  width: 1000px;
+  margin: auto;
 }
 
 .offer-icon-item{
   margin: 20px;
+  width: 25%;
 }
 
 .offer-icon-item i{
@@ -86,43 +91,44 @@ body {
   box-sizing: border-box;
 }
 
-.portfolio{
+.portfolio-container{
   width: 1000px;
   text-align: center;
-  padding-top: 30px;
+  margin: auto;
+  margin-top: 50px;
 }
 
 .portfolio-box{
-  /* display: inline-block; */
-  /* display: flex; */
+  display: flex;
+  flex-wrap: wrap;
   text-align: left;
   color: white;
-  margin: auto;
+  width: 100%;
 }
 
 .portfolio-bgimg{
   width: 50%;
-  height:300px;
+  height: 300px;
+  box-sizing: border-box;
   background-size: cover;
-  float:left;
-  /* padding: 30px; */
+  position: relative;
 }
-
 .white-box{
+  height: 100%;
   border: solid white 0px;
+  transition: all 0.3s;
   box-sizing: border-box;
-  transition: all 1s;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+}
+.portfolio-bgimg .portfolio-msg{
+  padding: 30px;
 }
 
-.white-box:hover{
-  border: solid white 10px;
-  box-sizing: border-box;
+.portfolio-bgimg:hover .white-box{
+  border: solid white 20px;
 }
-
-/* .portfolio-bgimg:hover{
-  border: solid white 10px;
-  box-sizing: border-box;
-} */
 
 .portfolio-lt{
   background-image: url("../img/portfolio-1.jpg");
@@ -135,10 +141,6 @@ body {
 }
 .portfolio-rb{
   background-image: url("../img/portfolio-4.jpg");
-}
-
-.portfolio-clear{
-  clear : both;
 }
 
 .footer{
@@ -164,17 +166,19 @@ body {
 }
 
 @media screen and (max-width : 1200px) {
-  .portfolio-box{
-    width: 100%;
-  }
   .portfolio-container{
-    flex-direction: column;
-    text-align: center;
+    width: 500px;
   }
-
   .portfolio-bgimg{
     width: 100%;
-    display: inline-block;
+  }
+  .offer-icon-container{
+    width: 500px;
+    flex-wrap: wrap;
+  }
+
+  .offer-icon-item{
+    width: 40%;
   }
 }
 
@@ -187,5 +191,8 @@ body {
   }
   .img-iphone{
     align-self: center;
+  }
+  .offer-icon-item{
+    width: 90%;
   }
 }
