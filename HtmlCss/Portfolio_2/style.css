@@ -1,0 +1,52 @@
+*{
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+body{
+  background-color: #f7f9fc;
+}
+.profile-container{
+  max-width: 1200px;
+  margin:auto;
+  padding: 20px;
+}
+.btn-my{
+  background-color: #6fbaf8;
+  border-style: none;
+}
+.profile-tab{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.profile-main{
+  width: 100%;
+}
+.box{
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  border-style: none;
+  box-shadow: 0.5px 0.5px 2px 1px #eee;
+  margin-top: 10px;
+}
+.pill{
+  border: 1px solid lightgray;
+  border-radius: 100px ;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.locate{
+  color: #6fbaf8;
+}
+.box-center{
+  text-align: center;
+}
+.logo{
+  margin: 20px;
+}
+.Know-box{
+  margin-top: 20px;
+}
