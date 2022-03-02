@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <style>
+    .alert-box{
+      width: 500px;
+      padding: 10px 20px 10px 30px;
+      border-radius: 10px;
+      background-color: darkslategrey;
+      color: white;
+      display: none;
+    }
+  </style>
+
+  <div class="alert-box" id="alert">
+    <p id="msg" style="display: inline-block">알림창임</p>
+    <button onclick="alert('none')">닫기(onclick)</button>
+    <button id="close">닫기(이벤트리스너)</button>
+  </div>
+
+  <button onclick="alert('block')">버튼</button>
+  <button onclick="alert('block', '아이디입력하세요')">버튼1</button>
+  <button onclick="alert('block', '비번입력하세요')">버튼2</button>
+
+  <script>
+    function alert(display, msg = '알림창임'){
+      document.getElementById('alert').style.display = display;
+      document.getElementById('msg').innerHTML = msg;
+    }
+    document.getElementById('close').addEventListener('click', () => {
+      document.getElementById('alert').style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
