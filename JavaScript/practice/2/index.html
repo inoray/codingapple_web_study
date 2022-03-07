@@ -35,18 +35,34 @@
       visibility: visible;
       opacity: 1;
     }
+    .hide{
+      display: none;
+    }
   </style>
 
   <div id="modal" class="black-bg">
     <div class="white-bg">
       <h4>로그인하세요</h4>
+
+      <form action="#">
+        <div class="mb-3">
+          <label for="inputEmail" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="inputPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword">
+        </div>
+        <button id="send" type="submit" class="btn btn-primary">전송</button>
+      </form>
       <button class="btn btn-danger" id="close">닫기</button>
-    </div>
+      </div>
   </div>
 
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <span class="navbar-brand">Navbar</span>
+      <span class="badge bg-dark">Dark 🔄</span>
       <button id="btn-show" class="navbar-toggler" type="button">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -59,7 +75,10 @@
     <li class="list-group-item">A fourth item</li>
     <li class="list-group-item">And a fifth one</li>
   </ul>
-  <button id="btn-modal">모달창</button>
+  <button id="btn-modal" class="btn btn-primary">로그인</button>
+  <div class="alert alert-danger">
+    5초 이내 구매시 사은품 증정!
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script>
@@ -74,6 +93,37 @@
       //$('#modal').hide();
       $('#modal').removeClass('show-modal');
     })
+
+    // 전송버튼 눌렀을 때 내용이 없으면 알림창 띄우기
+    $('form').submit(()=>{
+      if ($("#inputEmail").val() == ""){
+        alert("이메일 입력해 주세요");
+      }
+      if ($("#inputPassword").val().length < 6){
+        alert("비밀번호 입력해 주세요.");
+      }
+    })
+
+    let count = 0;
+    document.querySelectorAll(".badge")[0].addEventListener("click", ()=>{
+      count++;
+      if (count % 2 == 0){
+        document.querySelectorAll(".badge")[0].innerHTML = "Dark 🔄";
+      } else {
+        document.querySelectorAll(".badge")[0].innerHTML = "Light 🔄";
+      }
+    })
+
+    let limit = 5;
+    let timer = setInterval(()=>{
+      limit--;
+      if (limit == 0){
+        $('.alert').addClass('hide');
+        clearInterval(timer);
+      } else {
+        $('.alert').html(`${limit}초 이내 구매시 사은품 증정!`);
+      }
+    }, 1000)
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
