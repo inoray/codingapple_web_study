@@ -38,6 +38,17 @@
     .hide{
       display: none;
     }
+    .slide-container{
+      width: 300vw;
+      transition: all 1s;
+    }
+    .slide-box{
+      width: 100vw;
+      float: left;
+    }
+    .slide-box img{
+      width: 100%;
+    }
   </style>
 
   <div id="modal" class="black-bg">
@@ -79,6 +90,25 @@
   <div class="alert alert-danger">
     5초 이내 구매시 사은품 증정!
   </div>
+
+  <div style="overflow: hidden;">
+    <div class="slide-container">
+      <div class="slide-box">
+        <img src="car1.png">
+      </div>
+      <div class="slide-box">
+        <img src="car2.png">
+      </div>
+      <div class="slide-box">
+        <img src="car3.png">
+      </div>
+    </div>
+  </div>
+  <button id="btn-prev">이전사진보기</button>
+  <button id="btn-img1">1</button>
+  <button id="btn-img2">2</button>
+  <button id="btn-img3">3</button>
+  <button id="btn-next">다음사진보기</button>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script>
@@ -124,6 +154,37 @@
         $('.alert').html(`${limit}초 이내 구매시 사은품 증정!`);
       }
     }, 1000)
+
+    let curImg = 0;
+    $('#btn-img1').click(()=>{
+      $('.slide-container').css("transform", "translateX(0)");
+      curImg = 0;
+    })
+    $('#btn-img2').click(()=>{
+      $('.slide-container').css("transform", "translateX(-100vw)");
+      curImg = 1;
+    })
+    $('#btn-img3').click(()=>{
+      $('.slide-container').css("transform", "translateX(-200vw)");
+      curImg = 2;
+    })
+
+    $('#btn-prev').click(()=>{
+      if (curImg > 0){
+        curImg--;
+        $('.slide-container').css("transform", "translateX(-" + curImg * 100 + "vw)");
+      }
+    })
+    $('#btn-next').click(()=>{
+      let cntImg = document.querySelectorAll(".slide-box").length;
+
+      if (curImg < cntImg - 1){
+        curImg++;
+        //$('.slide-container').css("transform", "translateX(-" + curImg * 100 + "vw)");
+
+        document.querySelectorAll(".slide-container")[0].style.transform = "translateX(-" + curImg * 100 + "vw)";
+      }
+    })
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
