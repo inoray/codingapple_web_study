@@ -49,10 +49,10 @@
 
   <div class="container mt-5">
     <ul class="list">
-      <li class="tab-button">Products</li>
-      <li class="tab-button orange">Information</li>
-      <li class="tab-button">Shipping</li>
-      <li class="tab-button">Shipping2</li>
+      <li class="tab-button" data-id="0">Products</li>
+      <li class="tab-button orange" data-id="1">Information</li>
+      <li class="tab-button" data-id="2">Shipping</li>
+      <li class="tab-button" data-id="3">Shipping2</li>
     </ul>
     <div class="tab-content">
       <p>상품설명입니다. Product</p>
@@ -79,22 +79,41 @@
       tabContent[idx].classList.remove("show");
     }
     function showTab(idx){
+      for (let i = 0; i < cntTab; ++i){
+        hideTab(i)
+      }
       tabButtons[idx].classList.add("orange");
       tabContent[idx].classList.add("show");
     }
 
-    function resetTab(){
-      for (let i = 0; i < cntTab; ++i){
-        hideTab(i)
-      }
-    }
 
+    /*
+    // 방법1. 각 버튼에 이벤트 리스너 추가 방식
     for (let i = 0; i < cntTab; ++i){
       tabButtons[i].addEventListener("click", ()=>{
-        resetTab();
         showTab(i);
       })
     }
+    */
+
+    /*
+    // 방법2. 버튼 상위 요소인 list 에 이벤트리스너 추가 방식
+    // 이벤트리스너가 하나이기 때문에 메모리 사용이 줄어든다.
+    document.querySelector('.list').addEventListener('click', (e)=>{
+      for (let i = 0; i < cntTab; ++i){
+        if (e.target == tabButtons[i]){
+          showTab(i);
+          break;
+        }
+      }
+    })
+    */
+
+    // 방법3. dataset 사용방법  ==> 가장 간단함.
+    document.querySelector('.list').addEventListener('click', (e)=>{
+      //console.log(e.target.dataset.id)
+      showTab(parseInt(e.target.dataset.id)) // 바로 탭인덱스를 지정할 수 있다.
+    })
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
