@@ -69,6 +69,28 @@
         })
       }
     })
+
+
+    // Array 자료형, for 반복문 실력향상 과제
+    let 출석부 = ['흥민', '영희', '철수', '재석'];
+    function 이름찾기(name){
+      for (let i = 0; i < 출석부.length; ++i){
+        if (출석부[i] == name){
+          console.log('있어요');
+          return;
+        }
+      }
+      console.log('없어요');
+    }
+    이름찾기('철수');
+    이름찾기('명수');
+
+    // 구구단
+    for (let i = 2; i <= 9; ++i){
+      for (let j = 1; j <= 9; ++j){
+        console.log(`${i} x ${j} = ${i*j}`);
+      }
+    }
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
