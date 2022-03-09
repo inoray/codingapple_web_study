@@ -11,6 +11,8 @@
   <style>
     .list-group{
       display: none;
+      position: relative;
+      top: 100px;
     }
     .show{
       display: block;
@@ -48,6 +50,23 @@
     }
     .slide-box img{
       width: 100%;
+    }
+    .minjun{
+      transform: translateX(100px);
+      font-size:5px;
+      transition: all 1s;
+    }
+    .minjun:hover{
+      transform: translateX(200px) translateY(200px);
+      font-size: 100px;
+    }
+    .navbar{
+      position: fixed;
+      width: 100%;
+    }
+    .navbar-brand{
+      font-size: 30px;
+      transition: all 1s;
     }
   </style>
 
@@ -87,9 +106,6 @@
     <li class="list-group-item">And a fifth one</li>
   </ul>
   <button id="btn-modal" class="btn btn-primary">로그인</button>
-  <div class="alert alert-danger">
-    5초 이내 구매시 사은품 증정!
-  </div>
 
   <div style="overflow: hidden;">
     <div class="slide-container">
@@ -109,6 +125,18 @@
   <button id="btn-img2">2</button>
   <button id="btn-img3">3</button>
   <button id="btn-next">다음사진보기</button>
+
+  <div class="lorem" style="height:100px; width:200px; overflow: scroll; border: 1px solid gray;">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium laboriosam non, ad error eius odio suscipit iusto ex magni veniam placeat consequatur pariatur velit nihil nostrum earum repudiandae. Eos, fugit! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi, deserunt labore repellat ducimus consequuntur atque voluptas recusandae! Illum, eum asperiores, explicabo cum voluptates dicta atque tempora iure veritatis dolor architecto!</p>
+  </div>
+
+  <div class="alert alert-danger">
+    5초 이내 구매시 사은품 증정!
+  </div>
+  <div class="minjun">
+    <p>김민준</p>
+  </div>
+  <div style="height:1000px"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script>
@@ -181,8 +209,24 @@
       if (curImg < cntImg - 1){
         curImg++;
         //$('.slide-container').css("transform", "translateX(-" + curImg * 100 + "vw)");
-
         document.querySelectorAll(".slide-container")[0].style.transform = "translateX(-" + curImg * 100 + "vw)";
+      }
+    })
+    window.addEventListener('scroll', ()=>{
+      //console.log(window.scrollY)
+      if (window.scrollY < 5){
+        document.querySelector(".navbar-brand").style.fontSize = "30px";
+      } else {
+        document.querySelector(".navbar-brand").style.fontSize = "20px";
+      }
+    })
+    document.querySelector('.lorem').addEventListener("scroll", ()=>{
+      let elemLorem = document.querySelector('.lorem');
+      //console.log(document.querySelector('.lorem').scrollTop)
+      //console.log(document.querySelector('.lorem').clientHeight)
+      //console.log(document.querySelector('.lorem').scrollHeight)
+      if (elemLorem.scrollTop + elemLorem.clientHeight >= elemLorem.scrollHeight - 10){
+        alert("체크완료")
       }
     })
   </script>
