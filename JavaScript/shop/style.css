@@ -1,0 +1,18 @@
+#drop-box{
+  background-color: black;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 5px;
+  display:table;
+}
+
+#drop-box p{
+  text-align: center;
+  display:table-cell;
+  vertical-align:middle;
+}
+
+#product-list{
+  z-index: 5;
+}
